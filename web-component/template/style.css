@@ -1,0 +1,5 @@
+#posts article {
+    border: 1px solid black;
+    padding: 0.5rem 2rem;
+    margin-bottom: 0.5rem;
+}

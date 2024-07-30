@@ -1,0 +1,19 @@
+<!-- templates -->
+<template id="my-post-tag-template">
+    <link rel="stylesheet" href="./style.css">
+    <article class="post">
+        <slot name="my-title">
+            <h1>
+                Default Title
+            </h1>
+        </slot>
+        <slot name="my-content">
+            <p>
+                Default Content
+            </p>
+        </slot>
+        <slot>
+            default hello    
+        </slot>
+    </article>
+</template>

@@ -1,0 +1,14 @@
+export const BUTTON_X = 'X';
+export const BUTTON_Y = 'Y';
+export const BUTTON_A = 'A';
+export const BUTTON_B = 'B';
+export const BUTTON_Z = 'Z';
+export const BUTTON_x = 'X';
+export const BUTTON_C = 'C';
+export const BUTTON_V = 'V';
+export const BUTTON_UP = 'ARROWUP';
+export const BUTTON_DOWN = 'ARROWDOWN';
+export const BUTTON_LEFT = 'ARROWLEFT';
+export const BUTTON_RIGHT = 'ARROWRIGHT';
+export const BUTTON_CTRL = 'CONTROL';
+export const BUTTON_SHIFT = 'SHIFT';

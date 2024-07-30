@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./style.css">
+    
+    <script src="./customTag.js"></script>
+    <script src="./app.js"></script>
+</head>
+
+<body>
+
+    <!-- post list -->
+    <section id="posts">
+        <div class="container">
+            <!-- post item -->
+            <my-post-tag>
+                <h1 slot="my-title">1번글</h1>
+                <p slot="my-content">이것은 첫번째 게시글</p>
+            </my-post-tag>
+            <my-post-tag>
+                <h1 slot="my-title">2번글</h1>
+            </my-post-tag>
+            <my-post-tag>
+                <p slot="my-content">이것은 세번째 게시글</p>
+            </my-post-tag>
+            <my-post-tag>
+            </my-post-tag>
+            <!-- post item end -->
+        </div>
+        <my-hello-tag></my-hello-tag>
+    </section>
+    <!-- post list end -->
+</body>
+
+</html>

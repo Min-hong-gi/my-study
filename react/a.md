@@ -64,15 +64,17 @@ Google이 개발한 SPA프레임워크이자 현대 웹 개발의 조상인 Angu
 이러한 문제들로 대체제가 없어서 쓰던 AngularJs에 새로운 대체제가 나타나게 되니 이것이 바로 Facebook에서 출시한 React입니다.
 
 # React
-React는 위에서 언급된 3가지 문제를 어느정도 해결하고 현대 웹을 지탱하는 개념인 Virtual Dom와 Component를 도입합니다.
+React는 위에서 언급된 3가지 문제를 어느정도 해결하고 현대 웹을 지탱하는 개념인 Virtual Dom과 Component를 도입합니다.
 <small>
  - Component 패턴은 원래 있었지만 React의 Component는 좀 달랐습니다.
 </small>
 
 1. AngularJs보다는 쉽다
 	React도 js를 알고 있다는 가정 하에 1달 정도는 공부 해야하는 학습난이도를 가지고 있습니다. 그런데 비교 대상이 AngularJs가 되니 이게 별 문제가 없어졌습니다.
+
 2. javascript 친화적 코드 작성 방식
 	React는 '함수형 프로그래밍'방식과 밀접한 연관이 있는데 이는 순수 javascript의 개발 방식, 방향과도 아주 어울리는 방식이었고 Jquery는 사용할 필요도 없으니 매우 뜨거운 반응을 얻었습니다. (이쯤에 Jquery가 너무 무거우니 다시 바닐라 js로 돌아가자는 움직임이 시작됩니다.)
+	
 3. 성능 향상
 	AngularJs의 성능적 한계를 Virtual DOM을 통해 극복했습니다. Virtual Dom은 아래에서 설명합니다.
 

@@ -47,7 +47,7 @@ NEXT.js는 웹 어플리케이션을 생성하기 위한 빌딩 블록을 제공
 <small>
 
  - Next.js는 Node.js 버전 18.17.0 이상이 필요합니다.   
- [지금 바로 Node.js를 무료로 다운로드하고 플레이하세요](https://nodejs.org/en/download/package-manager)
+ [**지금 바로 Node.js를 다운로드하고 무료로 플레이하세요**](https://nodejs.org/en/download/package-manager)
 </small>
 
 원하는 위치에 터미널을 열고 아래 명령어를 입력합니다.

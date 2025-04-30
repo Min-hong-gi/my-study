@@ -1,6 +1,6 @@
 # 다형성과 상속
 ## 다형성
-다형성은 `하나의 객체를 여러 형태로 간주 할 수 있다`라는 뜻으로 Java의 모든 객체를 죄다 `Object`로 퉁칠 수 있다는 의미다.   
+다형성은 `하나의 객체를 여러 형태로 간주 할 수 있다`라는 뜻으로 Java의 모든 객체를 죄다 `Object`로 퉁칠 수 있다는 그런 것이다.(물론 농담이다)   
 그리고 이런 다형성을 Java를 비롯한 여러 언어에서는 `상속`이라는 것으로 가능하게 하고 있다.   
 여기 까지는 시험에도 나오고 하니 다 알고 있을 것인데, 문제는 이 다형성을 사용하는 방법이다.   
 
@@ -79,7 +79,7 @@ class Cat extends Animal {
 
 이로서 얻을 수 있는 교훈은
 ```
-클래스를 큰 개념으로 묶는 짓은 그만두어라, 외부에서 구체적인 내용을 알아야 한다면 그건 그냥 별도의 요소여야 한다.
+클래스를 큰 개념으로 묶기만 하는 것은 그만두어라, 외부에서 구체적인 내용을 알아야 한다면 그건 그냥 별도의 요소여야 한다.
 ```
 
 그럼 어떤때 상속을 해야 하는가?
@@ -87,11 +87,7 @@ class Cat extends Animal {
 아래 내가 실제로 사용했던 코드를 보며 알아보자
 ```java
 class STDMessageParser {
-    public static List<DataType> SLICE_INFO;
-    {
-        SLICE_INFO = new ArrayList<DataType>();
-        SLICE_INFO.add(new DataType("", "", 10000));
-    }
+    public List<DataType> SLICE_INFO;
 
     public Map<String, String> parseHeader(String header) {
         ...
@@ -106,7 +102,7 @@ class STDMessageParser {
     }
 }
 public class STDMessageMessageParser extends STDMessageParser {
-    {
+    public STDMessageMessageParser() {
         SLICE_INFO = new ArrayList<DataType>();
         SLICE_INFO.add(new DataType("DATA_CD", "데이터코드", 1));
         SLICE_INFO.add(new DataType("DATA_LEN", "데이터길이", 10));
@@ -198,14 +194,30 @@ class GoldMine extends Mine {
 }
 ```
 자 광산에서 채굴을 하면 각 광산에서 나올만한 원석이 나온다.   
-그런데 금, 은광산에서 채굴에 실패하면 `Ore`이 아니라 `null`이 나온다!   
-아니 아무리 그래도 돌은 나와야하는거 아닌가? 라는 의문은 버리고 중요한 부분은 분명 `Ore`을 주기로 했는데 `null`을 던지고 있다는 것이다. 이게 왜 문제인가?   
+그런데 금, 은광산에서 채굴에 실패하면 `Ore`이 아니라 `null`을 던진다!   
+아니 아무리 그래도 돌은 나와야하는거 아닌가? 라는 의문은 버리고 중요한 부분은 분명 `Ore`을 주기로 했는데 `null`을 던지고 있다는 것이다. 이게 왜 문제일까? 아래 예시를 보자   
+```java
+class StatueCrafter {
+    craft(Ore ore) {
+        System.out.println(ore.getName() + "로 만든 동상");
+    }
+}
+
+GoldMine mine = new GoldMine();
+Ore ore = mine.mining();
+
+StatueCrafter crafter = new StatueCrafter();
+crafter.craft(ore); <= 90%확률로 NullPointerException이 발생한다.
+```
 저 `Ore`을 가공하는 부분을 만드는 사람은 `Mine`에서 던져준 `Ore`가 `null`인지 모른다!   
 `Ore`을 뭔가로 만드는데 `null`이라고 `NullIngot`을(`NullPointerException`은 차치하더라도) 만들수는 없는 노릇이 아닌가! (특히나 `Mine`에서는 `null`을 반환하는 부분이 없어서 하위 구현체를 죄다 확인해야 하는 부분이 특히나 악질이다.)   
 이렇게 잘못된 오버라이딩은 부모의 가정(규칙)을 깨부수는 것에서 시작된다.   
-그리고 그렇게 꺠져버린 규칙은 클라이언트 코드를 망가뜨리게 된다. 부모의 의도를 따르라, 이건 육아가 아니고 자식의 자립의 최악을 결과를 낳을 뿐이다.
+그리고 그렇게 꺠져버린 규칙은 클라이언트 코드를 망가뜨리게 되고 이는 코드의 질적 저하를 유발하게 된다.   
+```
+부모의 의도를 따르라, 이건 육아가 아니고 자식의 자립은 최악을 결과를 낳을 뿐이다.
+```
 
- - 위 처럼 `null`을 반환하고 싶으면 `Optinal`을 사용할 수 있다.
+ - 정 `null`을 반환하고 싶으면 `Optinal`을 사용할 수 있다. 이러면 사용하는 쪽에서도 `null`을 염두하고 만들게 된다.
 ```java
 class Mine {
     public Optional<Ore> mining() {

@@ -207,7 +207,7 @@ GoldMine mine = new GoldMine();
 Ore ore = mine.mining();
 
 StatueCrafter crafter = new StatueCrafter();
-crafter.craft(ore); <= 90%확률로 NullPointerException이 발생한다.
+crafter.craft(ore); // <= 90%확률로 NullPointerException이 발생한다.
 ```
 저 `Ore`을 가공하는 부분을 만드는 사람은 `Mine`에서 던져준 `Ore`가 `null`인지 모른다!   
 `Ore`을 뭔가로 만드는데 `null`이라고 `NullIngot`을(`NullPointerException`은 차치하더라도) 만들수는 없는 노릇이 아닌가! (특히나 `Mine`에서는 `null`을 반환하는 부분이 없어서 하위 구현체를 죄다 확인해야 하는 부분이 특히나 악질이다.)   
